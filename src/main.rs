@@ -17,14 +17,6 @@ struct KeepassRecord {
     notes: String,
 }
 
-#[derive(Debug, Deserialize)]
-struct OnePasswordRecord {
-    title: String,
-    url: String,
-    username: String,
-    password: String,
-}
-
 fn get_first_arg() -> Result<OsString, Box<dyn Error>> {
     match env::args_os().nth(1) {
         None => Err(From::from("expected 1 argument, but got none")),
@@ -79,6 +71,14 @@ fn main() -> Result<(), Box<dyn Error>> {
 mod tests {
     use super::*;
     use std::{fs::File, path::Path};
+
+    #[derive(Debug, Deserialize)]
+    struct OnePasswordRecord {
+        title: String,
+        url: String,
+        username: String,
+        password: String,
+    }
 
     fn create_vec(file: File) -> Result<Vec<OnePasswordRecord>, Box<dyn Error>> {
         let mut kee: Vec<OnePasswordRecord> = Vec::new();
