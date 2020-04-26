@@ -1,0 +1,9 @@
+[package]
+name = "kee1"
+version = "0.1.0"
+authors = ["Bastian Gruber <foreach@me.com>"]
+edition = "2018"
+
+[dependencies]
+csv = "1.1"
+serde = { version = "1", features = ["derive"] }
